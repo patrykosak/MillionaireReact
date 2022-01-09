@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./app.css";
+
+const moneyPyramid = [
+  {id:1, amount:"500 zł"},
+  {id:2, amount:"1000 zł"},
+  {id:3, amount:"2000 zł"},
+  {id:4, amount:"5000 zł"},
+  {id:5, amount:"10 000 zł"},
+  {id:6, amount:"20 000 zł"},
+  {id:7, amount:"40 000 zł"},
+  {id:8, amount:"75 000 zł"},
+  {id:9, amount:"125 000 zł"},
+  {id:10, amount:"250 000 zł"},
+  {id:11, amount:"500 000 zł"},
+  {id:12, amount:"1 000 000 zł"}
+].reverse();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="main">
+
+      </div>
+      <div className="pyramid">
+        <ul className="moneyList">
+          {moneyPyramid.map(m=>{
+            return (
+              <li className="moneyListItem">
+              <span className="moneyListItemNumber">{m.id}</span>
+              <span className="moneyListItemAmount">{m.amount}</span>
+              </li>
+            )
+          })}
+
+        </ul>
+      </div>
     </div>
   );
 }
