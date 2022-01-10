@@ -1,5 +1,6 @@
 import "./app.css";
 import { useState } from "react";
+import Trivia from "./components/Trivia";
 
 const moneyPyramid = [
   { id: 1, amount: "500 zł" },
@@ -24,7 +25,9 @@ function App() {
         <div className="top">
           <div className="timer">30</div>
         </div>
-        <div className="bottom">question</div>
+        <div className="bottom">
+          <Trivia />
+        </div>
       </div>
       <div className="pyramid">
         <ul className="moneyList">
