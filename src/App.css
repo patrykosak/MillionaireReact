@@ -75,7 +75,7 @@
   margin: 0 10px 20px 10px;
 }
 
-.answer:hover, .answer:active {
+.answer:hover, .answer.active {
     background: mediumblue;
 }
 
