@@ -21,7 +21,7 @@ const moneyPyramid = [
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [timeOut, setTimeOut] = useState(false);
+  const [stop, setStop] = useState(false);
 
   const data = [
     {
@@ -99,7 +99,7 @@ function App() {
           <div className="timer">30</div>
         </div>
         <div className="bottom">
-          <Trivia data={data} setTimeOut={setTimeOut} setQuestionNumber={setQuestionNumber} questionNumber={questionNumber}/>
+          <Trivia data={data} setStop={setStop} setQuestionNumber={setQuestionNumber} questionNumber={questionNumber}/>
         </div>
       </div>
       <div className="pyramid">
