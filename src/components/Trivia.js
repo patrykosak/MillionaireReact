@@ -23,6 +23,7 @@ const Trivia = ({ data, setStop, setQuestionNumber, questionNumber }) => {
     delay(6000, ()=>{
       if(a.correct){
         setQuestionNumber((prev)=>prev+1)
+        setSelectedAnswer(null)
       }  
       else{
         setStop(true)

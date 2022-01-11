@@ -1,27 +1,27 @@
 import "./app.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Trivia from "./components/Trivia";
 
-
-
-const moneyPyramid = [
-  { id: 1, amount: "500 zł" },
-  { id: 2, amount: "1000 zł" },
-  { id: 3, amount: "2000 zł" },
-  { id: 4, amount: "5000 zł" },
-  { id: 5, amount: "10 000 zł" },
-  { id: 6, amount: "20 000 zł" },
-  { id: 7, amount: "40 000 zł" },
-  { id: 8, amount: "75 000 zł" },
-  { id: 9, amount: "125 000 zł" },
-  { id: 10, amount: "250 000 zł" },
-  { id: 11, amount: "500 000 zł" },
-  { id: 12, amount: "1 000 000 zł" },
-].reverse();
 
 function App() {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
+  const [earned, setEarned] = useState("0 zł");
+
+  const moneyPyramid = [
+    { id: 1, amount: "500 zł" },
+    { id: 2, amount: "1000 zł" },
+    { id: 3, amount: "2000 zł" },
+    { id: 4, amount: "5000 zł" },
+    { id: 5, amount: "10 000 zł" },
+    { id: 6, amount: "20 000 zł" },
+    { id: 7, amount: "40 000 zł" },
+    { id: 8, amount: "75 000 zł" },
+    { id: 9, amount: "125 000 zł" },
+    { id: 10, amount: "250 000 zł" },
+    { id: 11, amount: "500 000 zł" },
+    { id: 12, amount: "1 000 000 zł" },
+  ].reverse();
 
   const data = [
     {
@@ -92,15 +92,24 @@ function App() {
     },
   ];
 
+
+  useEffect(()=>{
+    questionNumber>1 &&setEarned(moneyPyramid.find(m=> m.id===questionNumber-1).amount) 
+  },[moneyPyramid, questionNumber])
+
   return (
     <div className="app">
       <div className="main">
+        {stop ? <h1 className="endText"> You earned: {earned} </h1> : (
+        <>
         <div className="top">
           <div className="timer">30</div>
         </div>
         <div className="bottom">
           <Trivia data={data} setStop={setStop} setQuestionNumber={setQuestionNumber} questionNumber={questionNumber}/>
         </div>
+        </>
+        )}
       </div>
       <div className="pyramid">
         <ul className="moneyList">
