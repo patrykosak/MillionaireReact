@@ -2,9 +2,11 @@ import "./app.css";
 import { useEffect, useState, useMemo } from "react";
 import Trivia from "./components/Trivia";
 import Timer from "./components/Timer";
+import Start from "./components/Start";
 
 
 function App() {
+  const [username, setUsername] = useState("");
   const [questionNumber, setQuestionNumber] = useState(1);
   const [stop, setStop] = useState(false);
   const [earned, setEarned] = useState("0 zł");
@@ -102,7 +104,9 @@ function App() {
 
   return (
     <div className="app">
-      <div className="main">
+      {username ? (
+        <>
+              <div className="main">
         {stop ? <h1 className="endText"> You earned: {earned} </h1> : (
         <>
         <div className="top">
@@ -132,6 +136,8 @@ function App() {
           })}
         </ul>
       </div>
+        </>
+      ) : <Start setUsername={setUsername} />}
     </div>
   );
 }
